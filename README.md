@@ -18,6 +18,20 @@ hospital-management-system/
 - MySQL 8.x
 - Maven 3.9+
 
+### Windows (PowerShell) Quick Commands
+```powershell
+# Backend
+Set-Location backend
+Copy-Item src/main/resources/application.properties.example src/main/resources/application.properties
+Copy-Item src/main/resources/application.yml.example src/main/resources/application.yml
+.\mvnw.cmd spring-boot:run
+
+# In a new terminal, frontend
+Set-Location frontend
+npm install
+npm run dev
+```
+
 ### Backend Setup
 
 1. Navigate to the backend directory:

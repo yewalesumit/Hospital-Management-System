@@ -1,0 +1,38 @@
+spring.application.name=hospitalManagement
+
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/hospitalDB
+spring.datasource.username=YOUR_DB_USERNAME
+spring.datasource.password=YOUR_DB_PASSWORD
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+server.servlet.context-path=/api/v1
+
+jwt.secretKey=YOUR_JWT_SECRET_KEY
+
+# Frontend URL for OAuth2 redirect
+frontend.base-url=http://localhost:5173
+
+# Consultation fee in paise (50000 = ₹500)
+payment.fee=50000
+
+# Razorpay Payment Gateway (Test Mode)
+razorpay.key_id=YOUR_RAZORPAY_KEY_ID
+razorpay.key_secret=YOUR_RAZORPAY_KEY_SECRET
+
+# AI / Ollama configuration
+ollama.enabled=false
+ollama.base-url=http://localhost:11434
+ollama.model=llama3.1:8b-instruct
+ai.context.max-appointments=5
+
+# Email (Gmail SMTP)
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=YOUR_GMAIL_ADDRESS
+spring.mail.password=YOUR_GMAIL_APP_PASSWORD
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+spring.mail.from=YOUR_GMAIL_ADDRESS
+

@@ -1,0 +1,72 @@
+/* Shared AI page layout — used by PatientAiAssistant, DoctorAiPanel, AdminAiPanel */
+
+.ai-page {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: calc(100vh - 80px);
+}
+
+.ai-page-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.ai-page-header-icon {
+  color: #6366f1;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+.ai-page-title {
+  font-size: 1.4rem; font-weight: 700; color: #1e293b; margin: 0;
+}
+.ai-page-subtitle {
+  font-size: 0.85rem; color: #64748b; margin: 4px 0 0;
+}
+
+/* Controls row */
+.ai-controls {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.ai-control-group {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.ai-control-label {
+  font-size: 0.8rem; font-weight: 600; color: #475569;
+  display: flex; align-items: center; gap: 5px;
+}
+.ai-control-select {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.87rem;
+  color: #1e293b;
+  background: #fff;
+  min-width: 220px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.ai-control-select:focus { border-color: #6366f1; }
+
+/* Mode toggle */
+.ai-mode-toggle {
+  display: flex;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.ai-mode-btn {
+  padding: 8px 18px;
+  font-size: 0.84rem; font-weight: 600;
+  border: none; background: #fff; color: #64748b;
+  cursor: pointer; font-family: inherit;
+  transition: background 0.15s, color 0.15s;
+}
+.ai-mode-btn.active   { background: #6366f1; color: #fff; }
+.ai-mode-btn:hover:not(.active) { background: #f1f5f9; }
+

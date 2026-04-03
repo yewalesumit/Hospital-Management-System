@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System - Design Mockups</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .mockup-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .mockup-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .mockup-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .mockup-header {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: white;
+            padding: 20px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .mockup-body {
+            padding: 30px;
+            min-height: 400px;
+        }
+
+        /* Landing Page Design */
+        .hero-section {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .hero-section h2 {
+            color: #1e40af;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .hero-section p {
+            color: #4b5563;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 5px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1e40af;
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #2563eb;
+            border: 2px solid #2563eb;
+        }
+
+        .btn-secondary:hover {
+            background: #2563eb;
+            color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background: #f3f4f6;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Login Form */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .social-login {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-google {
+            background: #4285f4;
+            color: white;
+        }
+
+        .btn-github {
+            background: #333;
+            color: white;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: #d1d5db;
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 20px;
+            min-height: 400px;
+        }
+
+        .sidebar {
+            background: #1e293b;
+            border-radius: 8px;
+            padding: 20px;
+            color: white;
+        }
+
+        .nav-item {
+            padding: 12px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .nav-item:hover {
+            background: #334155;
+        }
+
+        .nav-item.active {
+            background: #2563eb;
+        }
+
+        .dashboard-content {
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2563eb;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            margin-top: 5px;
+        }
+
+        /* Appointment Card */
+        .appointment-card {
+            background: white;
+            border-left: 4px solid #2563eb;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .appointment-time {
+            font-weight: 600;
+            color: #2563eb;
+            margin-bottom: 5px;
+        }
+
+        .appointment-doctor {
+            color: #374151;
+            margin-bottom: 10px;
+        }
+
+        .appointment-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-sm {
+            padding: 6px 15px;
+            font-size: 0.875rem;
+        }
+
+        /* Table */
+        .table {
+            width: 100%;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .table thead {
+            background: #f3f4f6;
+        }
+
+        .table th,
+        .table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .table th {
+            font-weight: 600;
+            color: #374151;
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .badge-success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge-warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-info {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        /* Profile */
+        .profile-section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin-right: 20px;
+        }
+
+        .profile-info h3 {
+            margin-bottom: 5px;
+        }
+
+        .profile-info p {
+            color: #6b7280;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .info-item {
+            padding: 15px;
+            background: #f9fafb;
+            border-radius: 6px;
+        }
+
+        .info-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: #111827;
+        }
+
+        /* Booking Form */
+        .step-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border-bottom: 3px solid #e5e7eb;
+            color: #9ca3af;
+            font-weight: 500;
+        }
+
+        .step.active {
+            border-bottom-color: #2563eb;
+            color: #2563eb;
+        }
+
+        .step.completed {
+            border-bottom-color: #10b981;
+            color: #10b981;
+        }
+
+        .department-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .department-card {
+            background: #f3f4f6;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .department-card:hover {
+            background: #dbeafe;
+            border-color: #2563eb;
+        }
+
+        .department-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .doctor-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .doctor-card:hover {
+            border-color: #2563eb;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+
+        .time-slots {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .time-slot {
+            padding: 10px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .time-slot:hover {
+            border-color: #2563eb;
+            background: #dbeafe;
+        }
+
+        .time-slot.selected {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mockup-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid,
+            .features-grid,
+            .department-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .note {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .note strong {
+            color: #92400e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏥 Hospital Management System - Design Mockups</h1>
+
+        <div class="note">
+            <strong>📌 Note:</strong> These are interactive design mockups showing the frontend design for the Hospital Management System.
+            The actual implementation will be in React with full functionality connected to the Spring Boot backend.
+        </div>
+
+        <!-- Landing Page -->
+        <div class="mockup-grid">
+            <div class="mockup-card">
+                <div class="mockup-header">1. Landing Page (Public)</div>
+                <div class="mockup-body">
+                    <div class="hero-section">
+                        <h2>🏥 Modern Healthcare</h2>
+                        <p>Quality Care, Compassionate Service</p>
+                        <a href="#" class="btn btn-primary">Book Appointment</a>
+                        <a href="#" class="btn btn-secondary">Learn More</a>
+                    </div>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🏥</div>
+                            <strong>24/7 Care</strong>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">👨‍⚕️</div>
+                            <strong>Expert Doctors</strong>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📋</div>
+                            <strong>Easy Booking</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Login Page -->
+            <div class="mockup-card">
+                <div class="mockup-header">2. Login Page</div>
+                <div class="mockup-body">
+                    <h3 style="text-align: center; margin-bottom: 20px;">Login to Your Account</h3>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" placeholder="Enter your password">
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 8px;">
+                            <input type="checkbox"> Remember Me
+                        </label>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%;">Login</button>
+                    <div class="divider">OR</div>
+                    <div class="social-login">
+                        <button class="btn btn-google">🔵 Continue with Google</button>
+                        <button class="btn btn-github">⚫ Continue with GitHub</button>
+                    </div>
+                    <p style="text-align: center; margin-top: 20px; color: #6b7280;">
+                        Don't have an account? <a href="#" style="color: #2563eb;">Sign Up</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Sign Up Page -->
+            <div class="mockup-card">
+                <div class="mockup-header">3. Sign Up Page</div>
+                <div class="mockup-body">
+                    <h3 style="text-align: center; margin-bottom: 20px;">Create New Account</h3>
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-input" placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" placeholder="Create password">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Role</label>
+                        <div style="display: flex; gap: 20px;">
+                            <label><input type="radio" name="role" checked> Patient</label>
+                            <label><input type="radio" name="role"> Doctor</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 8px;">
+                            <input type="checkbox"> I agree to Terms & Conditions
+                        </label>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%;">Create Account</button>
+                </div>
+            </div>
+
+            <!-- Patient Dashboard -->
+            <div class="mockup-card" style="grid-column: span 2;">
+                <div class="mockup-header">4. Patient Dashboard</div>
+                <div class="mockup-body">
+                    <div class="dashboard">
+                        <div class="sidebar">
+                            <div class="nav-item active">🏠 Home</div>
+                            <div class="nav-item">📅 Book Appointment</div>
+                            <div class="nav-item">📋 My Appointments</div>
+                            <div class="nav-item">👨‍⚕️ Doctors</div>
+                            <div class="nav-item">👤 Profile</div>
+                        </div>
+                        <div class="dashboard-content">
+                            <h3 style="margin-bottom: 15px;">Welcome back, John Doe! 👋</h3>
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <div class="stat-number">Feb 25</div>
+                                    <div class="stat-label">Next Appointment</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-number">2</div>
+                                    <div class="stat-label">Pending</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-number">15</div>
+                                    <div class="stat-label">Total Records</div>
+                                </div>
+                            </div>
+                            <h4 style="margin: 20px 0 15px 0;">Upcoming Appointments</h4>
+                            <div class="appointment-card">
+                                <div class="appointment-time">Feb 25, 2026 | 10:00 AM</div>
+                                <div class="appointment-doctor">Dr. Sarah Johnson - Cardiology</div>
+                                <div class="appointment-actions">
+                                    <button class="btn btn-primary btn-sm">View</button>
+                                    <button class="btn btn-secondary btn-sm">Reschedule</button>
+                                </div>
+                            </div>
+                            <div class="appointment-card">
+                                <div class="appointment-time">Mar 1, 2026 | 2:30 PM</div>
+                                <div class="appointment-doctor">Dr. Michael Chen - General</div>
+                                <div class="appointment-actions">
+                                    <button class="btn btn-primary btn-sm">View</button>
+                                    <button class="btn btn-secondary btn-sm">Reschedule</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book Appointment -->
+            <div class="mockup-card" style="grid-column: span 2;">
+                <div class="mockup-header">5. Book Appointment</div>
+                <div class="mockup-body">
+                    <div class="step-indicator">
+                        <div class="step completed">1. Department</div>
+                        <div class="step active">2. Doctor</div>
+                        <div class="step">3. Date & Time</div>
+                    </div>
+                    <h4 style="margin-bottom: 15px;">Select Department</h4>
+                    <div class="department-grid">
+                        <div class="department-card">
+                            <div class="department-icon">🫀</div>
+                            <div>Cardiology</div>
+                        </div>
+                        <div class="department-card">
+                            <div class="department-icon">🧠</div>
+                            <div>Neurology</div>
+                        </div>
+                        <div class="department-card">
+                            <div class="department-icon">👁️</div>
+                            <div>Ophthalmology</div>
+                        </div>
+                        <div class="department-card">
+                            <div class="department-icon">🦷</div>
+                            <div>Dental</div>
+                        </div>
+                    </div>
+                    <h4 style="margin: 20px 0 15px 0;">Choose Doctor</h4>
+                    <div class="doctor-card">
+                        <strong>Dr. Sarah Johnson</strong>
+                        <div style="color: #f59e0b;">⭐⭐⭐⭐⭐ (4.9)</div>
+                        <div style="color: #6b7280;">Specialization: Cardiology | Experience: 15 years</div>
+                        <button class="btn btn-primary btn-sm" style="margin-top: 10px;">Select Doctor</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Doctor Dashboard -->
+            <div class="mockup-card" style="grid-column: span 2;">
+                <div class="mockup-header">6. Doctor Dashboard</div>
+                <div class="mockup-body">
+                    <div class="dashboard">
+                        <div class="sidebar">
+                            <div class="nav-item active">🏠 Home</div>
+                            <div class="nav-item">📅 Appointments</div>
+                            <div class="nav-item">👥 Patients</div>
+                            <div class="nav-item">📊 Schedule</div>
+                            <div class="nav-item">👤 Profile</div>
+                        </div>
+                        <div class="dashboard-content">
+                            <h3 style="margin-bottom: 15px;">Good Morning, Dr. Johnson! ☀️</h3>
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <div class="stat-number">8</div>
+                                    <div class="stat-label">Today</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-number">3</div>
+                                    <div class="stat-label">Pending</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-number">142</div>
+                                    <div class="stat-label">Completed</div>
+                                </div>
+                            </div>
+                            <h4 style="margin: 20px 0 15px 0;">Today's Appointments</h4>
+                            <div class="appointment-card">
+                                <div class="appointment-time">09:00 AM - John Doe</div>
+                                <div class="appointment-doctor">Age: 45 | Blood: O+ | Reason: Chest pain</div>
+                                <div class="appointment-actions">
+                                    <button class="btn btn-primary btn-sm">View Details</button>
+                                    <button class="btn btn-secondary btn-sm">Complete</button>
+                                </div>
+                            </div>
+                            <div class="appointment-card">
+                                <div class="appointment-time">10:00 AM - Jane Smith</div>
+                                <div class="appointment-doctor">Age: 32 | Blood: A+ | Reason: Regular checkup</div>
+                                <div class="appointment-actions">
+                                    <button class="btn btn-primary btn-sm">View Details</button>
+                                    <button class="btn btn-secondary btn-sm">Complete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Dashboard -->
+            <div class="mockup-card" style="grid-column: span 2;">
+                <div class="mockup-header">7. Admin Dashboard</div>
+                <div class="mockup-body">
+                    <div class="dashboard">
+                        <div class="sidebar">
+                            <div class="nav-item active">📊 Dashboard</div>
+                            <div class="nav-item">👥 Patients</div>
+                            <div class="nav-item">👨‍⚕️ Doctors</div>
+                            <div class="nav-item">🏢 Departments</div>
+                            <div class="nav-item">📅 Appointments</div>
+                            <div class="nav-item">⚙️ Settings</div>
+                        </div>
+                        <div class="dashboard-content">
+                            <h3 style="margin-bottom: 15px;">System Overview 📊</h3>
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <div class="stat-number">45</div>
+                                    <div class="stat-label">Doctors</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-number">1,234</div>
+                                    <div class="stat-label">Patients</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-number">342</div>
+                                    <div class="stat-label">Appointments</div>
+                                </div>
+                            </div>
+                            <h4 style="margin: 20px 0 15px 0;">Recent Activities</h4>
+                            <div style="background: white; padding: 15px; border-radius: 8px;">
+                                <div style="margin-bottom: 10px;">• New patient registered: John Doe</div>
+                                <div style="margin-bottom: 10px;">• Dr. Smith completed 5 appointments</div>
+                                <div style="margin-bottom: 10px;">• New doctor onboarded: Dr. Wilson</div>
+                            </div>
+                            <div style="margin-top: 20px;">
+                                <button class="btn btn-primary btn-sm">+ Add Doctor</button>
+                                <button class="btn btn-secondary btn-sm">View Reports</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Patient Management Table -->
+            <div class="mockup-card" style="grid-column: span 2;">
+                <div class="mockup-header">8. Patient Management (Admin)</div>
+                <div class="mockup-body">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                        <input type="text" class="form-input" placeholder="Search patients..." style="max-width: 300px;">
+                        <button class="btn btn-primary">+ Add Patient</button>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Blood Group</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>001</td>
+                                <td>John Doe</td>
+                                <td>45</td>
+                                <td>Male</td>
+                                <td>O+</td>
+                                <td><span class="badge badge-success">Active</span></td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm">View</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>002</td>
+                                <td>Jane Smith</td>
+                                <td>32</td>
+                                <td>Female</td>
+                                <td>A+</td>
+                                <td><span class="badge badge-success">Active</span></td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm">View</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>003</td>
+                                <td>Bob Jones</td>
+                                <td>58</td>
+                                <td>Male</td>
+                                <td>B+</td>
+                                <td><span class="badge badge-warning">Pending</span></td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm">View</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="margin-top: 20px; text-align: center; color: #6b7280;">
+                        Page 1 of 50
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Page -->
+            <div class="mockup-card">
+                <div class="mockup-header">9. Profile Page</div>
+                <div class="mockup-body">
+                    <div class="profile-section">
+                        <div class="profile-header">
+                            <div class="profile-avatar">JD</div>
+                            <div class="profile-info">
+                                <h3>John Doe</h3>
+                                <p>john.doe@example.com</p>
+                                <p style="font-size: 0.875rem;">Patient ID: #PAT-001</p>
+                            </div>
+                        </div>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Date of Birth</div>
+                                <div class="info-value">January 15, 1980</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Gender</div>
+                                <div class="info-value">Male</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Blood Group</div>
+                                <div class="info-value">O+</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Phone</div>
+                                <div class="info-value">+1 234-567-8900</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-section">
+                        <h4 style="margin-bottom: 15px;">Insurance Information</h4>
+                        <div class="info-item">
+                            <div class="info-label">Provider</div>
+                            <div class="info-value">ICICI</div>
+                        </div>
+                        <div class="info-item" style="margin-top: 10px;">
+                            <div class="info-label">Policy Number</div>
+                            <div class="info-value">ICICI_1234</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%;">Edit Profile</button>
+                </div>
+            </div>
+
+            <!-- Onboard Doctor Form -->
+            <div class="mockup-card">
+                <div class="mockup-header">10. Onboard New Doctor (Admin)</div>
+                <div class="mockup-body">
+                    <h4 style="margin-bottom: 20px;">Add New Doctor</h4>
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-input" placeholder="Dr. Sarah Johnson">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="sarah@hospital.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Specialization</label>
+                        <select class="form-input">
+                            <option>Select Specialization</option>
+                            <option>Cardiology</option>
+                            <option>Neurology</option>
+                            <option>Pediatrics</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Experience (years)</label>
+                        <input type="number" class="form-input" placeholder="15">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Department</label>
+                        <select class="form-input">
+                            <option>Select Department</option>
+                            <option>Cardiology</option>
+                            <option>Neurology</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%;">Onboard Doctor</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="note" style="margin-top: 40px;">
+            <strong>✅ Project Status:</strong>
+            <ul style="margin-top: 10px; margin-left: 20px;">
+                <li>✅ Backend: Fully functional and tested</li>
+                <li>✅ Frontend Structure: Created with React</li>
+                <li>✅ Design Mockups: Completed (view this page)</li>
+                <li>⏭️ Next Step: Implement these designs in React components</li>
+                <li>⏭️ Integration: Connect frontend to backend APIs</li>
+            </ul>
+        </div>
+
+        <div style="background: white; border-radius: 12px; padding: 30px; margin-top: 30px;">
+            <h2 style="margin-bottom: 20px; color: #2563eb;">📁 Project Structure</h2>
+            <pre style="background: #f3f4f6; padding: 20px; border-radius: 8px; overflow-x: auto;">
+hospital-management-system/
+├── backend/                    ✅ Spring Boot (READY)
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/com/sumit/hospitalManagement/
+│   │   │   │   ├── controller/
+│   │   │   │   ├── service/
+│   │   │   │   ├── repository/
+│   │   │   │   ├── entity/
+│   │   │   │   ├── dto/
+│   │   │   │   └── security/
+│   │   │   └── resources/
+│   │   └── test/
+│   └── pom.xml
+│
+├── frontend/                   ✅ React (CREATED)
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   └── App.js
+│   └── package.json
+│
+├── README.md                   ✅ Main documentation
+├── FRONTEND_DESIGN.md          ✅ Design specifications
+├── API_DOCUMENTATION.md        ✅ API reference
+├── BACKEND_VERIFICATION_REPORT.md  ✅ Test results
+└── DESIGN_MOCKUPS.html        ✅ Visual mockups (this file)
+            </pre>
+        </div>
+
+        <footer style="text-align: center; color: white; margin-top: 40px; padding: 20px;">
+            <p style="font-size: 1.2rem; margin-bottom: 10px;">🎉 Hospital Management System</p>
+            <p>Backend ✅ Ready | Frontend ✅ Initialized | Designs ✅ Complete</p>
+            <p style="margin-top: 15px; opacity: 0.8;">© 2026 - All Rights Reserved</p>
+        </footer>
+    </div>
+</body>
+</html>
+

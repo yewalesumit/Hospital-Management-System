@@ -1,0 +1,23 @@
+# Build outputs
+backend/target/
+frontend/dist/
+frontend/node_modules/
+
+# IDE / OS files
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+backend/build.log
+backend/test-out.txt
+backend/test-results.txt
+
+# Local environment / secrets
+.env
+.env.*
+backend/src/main/resources/application.properties
+backend/src/main/resources/application.yml
+

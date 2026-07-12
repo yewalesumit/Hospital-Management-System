@@ -97,6 +97,100 @@ npm run dev
 
 The frontend will be available at: `http://localhost:5173`
 
+---
+
+## 🔐 Security Architecture
+
+### JWT Authentication Flow:
+1. User sends email + password to `POST /api/v1/auth/login`
+2. Backend validates credentials, generates a **JWT token** (signed with secret key)
+3. Frontend stores the token in localStorage
+4. Every API request sends `Authorization: Bearer <token>` header
+5. `JwtAuthFilter` intercepts every request, validates the token, sets the security context
+
+### Google OAuth2 Flow:
+1. User clicks "Login with Google"
+2. Redirected to Google's OAuth2 server
+3. Google sends back an authorization code
+4. Backend exchanges it for user info via `OAuth2SuccessHandler`
+5. If user doesn't exist → auto-created in DB
+6. JWT token generated and redirected to frontend
+
+### Role-Based Access Control (RBAC):
+```
+/public/**            → Anyone (no auth)
+/auth/login, /signup  → Anyone
+/ai/faq               → Anyone (public FAQ)
+/ai/qa                → Any logged-in user
+/ai/summary           → DOCTOR or ADMIN only
+/admin/**             → ADMIN only
+/doctors/**           → DOCTOR or ADMIN
+/patients/**          → PATIENT or ADMIN
+```
+
+
+## 🎯 Core Features Explained
+
+### 1. 📅 Appointment Booking (Patient)
+- Patient selects a doctor, picks date/time, writes reason
+- **Payment required** before appointment is confirmed (Razorpay)
+- Flow: Select Doctor → Pay ₹500 → Appointment Created
+
+### 2. 💳 Razorpay Payment Integration
+- Backend creates a Razorpay **order** → returns `orderId` to frontend
+- Frontend opens Razorpay payment popup
+- After payment → frontend sends `paymentId + signature` to backend
+- Backend **verifies HMAC-SHA256 signature** (security check — prevents fake payments)
+- On success → appointment is confirmed and linked to the payment
+
+### 3. 🤖 AI Assistant (3 Types)
+
+| Type | Endpoint | Who Can Use | What It Does |
+|---|---|---|---|
+| **FAQ Bot** | `/ai/faq` | Anyone (public) | General hospital questions |
+| **Patient AI** | `/ai/qa` | Logged-in users | Personalized health Q&A with patient context |
+| **Summary** | `/ai/summary` | Doctor, Admin | Generate medical summary of a patient |
+
+**AI Pipeline (in order):**
+```
+1. Generate requestId (UUID)
+2. AiAccessControl.check() → DENY immediately if not allowed
+3. PatientContextBuilder.build() → fetch patient data from DB
+4. PromptTemplates → inject context into system prompt
+5. LlmProvider.complete() → call Ollama (or Mock) and measure latency
+6. AiAuditLogger.logAllowed() → persist audit row asynchronously
+7. Return AiResponse
+```
+
+**LLM Provider Strategy:**
+- `ollama.enabled=true` → calls Ollama running locally (LLaMA 3.1 8B)
+- `ollama.enabled=false` → `MockLlmProvider` returns test responses (no GPU needed)
+
+### 4. 📧 Email Notifications
+- When doctor or admin **cancels an appointment** → patient gets a **professional HTML email**
+- Email includes: hospital branding, patient name, doctor name, appointment time, cancellation reason
+- Sent **asynchronously** (`@Async`) — API response is instant, email runs in background
+- Uses Gmail SMTP with App Password (not plain password)
+
+### 5. 🏥 Insurance Management (Patient)
+- Patients can add/update their insurance: Policy Number, Provider Name, Valid Until date
+- One-to-one relationship between Patient and Insurance
+- Viewable and editable from the Patient Dashboard
+
+### 6. 👨‍⚕️ Doctor Appointment Cancellation
+- Doctors see their appointments on the Doctor Dashboard
+- Can cancel any appointment with a reason
+- Email automatically sent to patient
+
+### 7. 🔧 Admin Features
+- **Patient Management**: View all patients, see their details
+- **Doctor Management**: View all doctors
+- **Onboard Doctor**: Create User + Doctor profile linked together
+- **Appointment Management**: View all, cancel any, reassign to different doctor
+- **Admin AI Panel**: AI summary for any patient
+
+---
+
 ## 🔑 Features
 
 ### Backend (Spring Boot)
@@ -138,13 +232,6 @@ The frontend will be available at: `http://localhost:5173`
 - **Insurance**: Patient insurance information
 - **Department**: Hospital departments
 
-## 🔐 Security
-
-- JWT-based authentication
-- OAuth2 integration (Google, GitHub)
-- Role-based access control
-- Password encryption with BCrypt
-- CORS configuration for frontend integration
 
 ## 🧪 Testing
 

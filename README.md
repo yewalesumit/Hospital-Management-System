@@ -4,10 +4,29 @@ A full-stack hospital management system with separate backend and frontend.
 
 ## 📁 Project Structure
 
-```
 hospital-management-system/
-├── backend/          # Spring Boot REST API
-└── frontend/         # React.js Web Application
+├── backend/          ← Spring Boot App
+│   └── src/main/java/com/sumit/hospitalManagement/
+│       ├── controller/      ← REST API endpoints
+│       ├── service/         ← Business logic
+│       ├── entity/          ← Database tables (JPA Entities)
+│       ├── repository/      ← Database queries (Spring Data)
+│       ├── dto/             ← Data Transfer Objects (request/response shapes)
+│       ├── security/        ← JWT, OAuth2, Spring Security config
+│       ├── ai/              ← AI modules (LLM provider, prompts, audit)
+│       └── config/          ← App configuration beans
+└── frontend/
+    └── src/
+        ├── pages/           ← React page components
+        │   ├── admin/       ← Admin-only pages
+        │   ├── doctor/      ← Doctor-only pages
+        │   ├── patient/     ← Patient-only pages
+        │   ├── LandingPage  ← Public home page
+        │   ├── Login/Signup ← Auth pages
+        │   └── FaqBot       ← Public FAQ chatbot
+        ├── components/      ← Reusable UI components
+        ├── context/         ← React Context (global auth state)
+        └── services/        ← API call functions (Axios)
 ```
 
 ## 🚀 Getting Started

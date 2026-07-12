@@ -3,7 +3,7 @@
 A full-stack hospital management system with separate backend and frontend.
 
 ## 📁 Project Structure
-
+```
 hospital-management-system/
 ├── backend/          ← Spring Boot App
 │   └── src/main/java/com/sumit/hospitalManagement/
